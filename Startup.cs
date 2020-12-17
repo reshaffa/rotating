@@ -1,4 +1,6 @@
 using System;
+using Microsoft.EntityFrameworkCore;
+using rotating.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -23,7 +25,19 @@ namespace rotating
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddDbContext<UserContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+            services.AddDbContext<AreaContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+            services.AddDbContext<UploadContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+            services.AddDbContext<VibrationContext>(options => 
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+            );
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
