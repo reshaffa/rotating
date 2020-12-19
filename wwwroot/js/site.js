@@ -160,7 +160,9 @@ $(document).ready(function() {
         data : listWeek
     })
 
-    $("#btn-uploads").on("click",function(){
+    $("#btn-uploads").on("click",function(e){
+        e.preventDefault();
+
         var year = $("#select-year").val();
         var month = $("#select-month").val();
         var week = $("#select-week").val();
@@ -199,20 +201,22 @@ $(document).ready(function() {
                 month : parseInt(month),
                 week : parseInt(week)
             }
-            console.log(parameter)
 
             $("#btn-uploads").attr("disabled",true);
             $("#btn-uploads").text("");
-            $("#btn-uploads").append('<i class="fas fa-sync-alt fa-spin"></i> Loading to save...')
+            $("#btn-uploads").append('<i class="fas fa-sync-alt fa-spin"></i> Loading to save...');
+
             $.ajax({
                 type : "POST",
-                url : "https://rotating-services.azurewebsites.net/api/rotating/v1/vibrations",
+                url : "/vibration/create",
                 dataType : "JSON",
                 data : { parameter },
                 success : function(response){
                     console.log(response)
                 }, error : function(err){
-                    console.log(err);
+                    $("#btn-uploads").attr("disabled",false);
+                    $("#btn-uploads").text("Create");
+                    toastr.error("Internal Server Error !")
                 }
             })
         }
