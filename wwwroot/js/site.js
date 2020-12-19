@@ -86,15 +86,29 @@ $(document).ready(function() {
     var tables = $('#table-vibrations').DataTable({
         "lengthChange": false,
         "searching": true,
-        "loadingRecords": "Loading...",
-        "processing":     "Processing...",
         "zeroRecords":    "No matching records found",
         "paginate": {
             "first":      "First",
             "last":       "Last",
             "next":       "Next",
             "previous":   "Previous"
-        }
+        },
+        "ajax" : {
+            "url" : "/vibration/getall",
+            "type" : "GET",
+            "datatype" : "json"
+        },
+        "columns" : [
+            { "data" : "#" },
+            { "data" : "Filename"},
+            { "data" : "Description" },
+            {
+                "data" : "id",
+                "render" : function(data){
+                    return `<button class="btn btn-otline-danger btn-sm">Hapus</button>`
+                }
+            }
+        ]
     });
     $(".dataTables_filter").hide();
     $('#search-table').on('keyup', function () {

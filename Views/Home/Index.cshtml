@@ -1,6 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@section HeadBlock {
+    <script src="~/lib/excel/shim.min.js"></script>
+    <script src="~/lib/excel/xlsx.full.min.js"></script>
+}
 
 <div class="container mt-5">
     <div class="form-group row">
@@ -64,3 +68,6 @@
         </table>
     </div>
 </div>
+@section ScriptsBlock {
+    <script src="~/js/site.js" asp-append-version="true"></script>
+}

@@ -3,15 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - rotating</title>
+    <title>@ViewData["Title"]</title>
     <link href="~/lib/select2/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/dataTables/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <script src="~/lib/excel/lodash.min.js"></script>
-    <script src="~/lib/excel/shim.min.js"></script>
-    <script src="~/lib/excel/xlsx.full.min.js"></script>
+    <link rel="stylesheet" href="~/lib/toastr/toastr.min.css" />
+    <script src="~/lib/lodash/lodash.min.js"></script>
+    @await RenderSectionAsync("HeadBlock", required: false)
 </head>
 <body>
     <header>
@@ -33,12 +33,13 @@
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/lib/moment/moment.js"></script>
-    <script src="~/lib/select2/js/select2.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/dataTables/js/jquery.dataTables.min.js"></script>
     <script src="~/lib/dataTables/js/dataTables.bootstrap4.min.js"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+    <script src="~/lib/moment/moment.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+    <script src="~/lib/select2/js/select2.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    @await RenderSectionAsync("ScriptsBlock", required: false)
 </body>
 </html>

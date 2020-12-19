@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "User Menegemant RE Dashboard";
+}
+<div class="container mt-5">
+    <div class="form-group row" style="margin-bottom: 5px">
+        <div class="col-md-8">
+            <button type="button" id="btn-create" class="btn btn-success btn-sm">Create User</button>
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="search-table" class="form-control form-control-sm" autofocus="true" placeholder="Ketik kata kunci disini...">
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="table-users" class="table table-bordered table-sm table-striped table-hover" style="width:100%">
+            <thead class="bg-dark">
+                <tr class="text-white">
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<partial name="_ModalCreateUser"></partial>
+@section ScriptsBlock {
+    <script type="text/javascript" src="~/js/users.js"></script>
+}

@@ -15603,6 +15603,11 @@
   "RootNamespace": "rotating",
   "Documents": [
     {
+      "FilePath": "c:\\POWER BI\\ROTATING\\Development\\rotating\\Views\\Shared\\_ModalCreateUser.cshtml",
+      "TargetPath": "Views\\Shared\\_ModalCreateUser.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\POWER BI\\ROTATING\\Development\\rotating\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
       "FileKind": "mvc"
@@ -15625,6 +15630,16 @@
     {
       "FilePath": "c:\\POWER BI\\ROTATING\\Development\\rotating\\Views\\Shared\\_Layout.cshtml",
       "TargetPath": "Views\\Shared\\_Layout.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\POWER BI\\ROTATING\\Development\\rotating\\Views\\Vibration\\Index.cshtml",
+      "TargetPath": "Views\\Vibration\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\POWER BI\\ROTATING\\Development\\rotating\\Views\\User\\Index.cshtml",
+      "TargetPath": "Views\\User\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
