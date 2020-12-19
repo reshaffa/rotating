@@ -15638,8 +15638,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\POWER BI\\ROTATING\\Development\\rotating\\Views\\Shared\\_ModalCreateArea.cshtml",
+      "TargetPath": "Views\\Shared\\_ModalCreateArea.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\POWER BI\\ROTATING\\Development\\rotating\\Views\\User\\Index.cshtml",
       "TargetPath": "Views\\User\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\POWER BI\\ROTATING\\Development\\rotating\\Views\\Area\\index.cshtml",
+      "TargetPath": "Views\\Area\\index.cshtml",
       "FileKind": "mvc"
     },
     {

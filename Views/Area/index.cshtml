@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Area Menegemant RE Dashboard";
+}
+<div class="container mt-5">
+    <div class="form-group row" style="margin-bottom: 5px">
+        <div class="col-md-8">
+            <button type="button" id="btn-create" class="btn btn-success btn-sm">Create Location</button>
+        </div>
+        <div class="col-md-4">
+            <input type="text" id="search-table" class="form-control form-control-sm" autofocus="true" placeholder="Ketik kata kunci disini...">
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table id="table-areas" class="table table-bordered table-sm table-striped table-hover" style="width:100%">
+            <thead class="bg-dark">
+                <tr class="text-white">
+                    <th>Area Name</th>
+                    <th>Area Type</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+<partial name="_ModalCreateArea"></partial>
+@section ScriptsBlock {
+    <script type="text/javascript" src="~/js/areas.js"></script>
+}

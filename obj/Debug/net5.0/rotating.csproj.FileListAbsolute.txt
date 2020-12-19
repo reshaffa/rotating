@@ -427,3 +427,4 @@ C:\POWER BI\ROTATING\Development\rotating\obj\Debug\net5.0\rotating.MvcApplicati
 C:\POWER BI\ROTATING\Development\rotating\obj\Debug\net5.0\Razor\Views\Vibration\Index.cshtml.g.cs
 C:\POWER BI\ROTATING\Development\rotating\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
 C:\POWER BI\ROTATING\Development\rotating\obj\Debug\net5.0\Razor\Views\Shared\_ModalCreateUser.cshtml.g.cs
+C:\POWER BI\ROTATING\Development\rotating\obj\Debug\net5.0\Razor\Views\Area\index.cshtml.g.cs
