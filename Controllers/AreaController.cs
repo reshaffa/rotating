@@ -28,14 +28,14 @@ namespace rotating.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult<User>> Create(Area Area)
+        public async Task<ActionResult> Create(
+            [Bind("name","area_type","created_at","updated_at")]
+            Area areas)
         {
-            Area = new Area();
             if (ModelState.IsValid)
             {
-                 _db.areas.Add(Area);
-                var status = await _db.SaveChangesAsync();
+                 _db.areas.Add(areas);
+                await _db.SaveChangesAsync();
                 return Json(new
                 {
                     success = true,

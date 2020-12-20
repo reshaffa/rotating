@@ -20,6 +20,13 @@ namespace rotating.Models{
         public int last_one { get; set; }
         public int last_two { get; set; }
         public int last_three { get; set; }
+        [Required]
+        public int year { get; set; }
+        [Required]
+        public int month { get; set; }
+        [Required]
+        public int week { get; set; }
+        public int upload_type { get; set; }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
     }

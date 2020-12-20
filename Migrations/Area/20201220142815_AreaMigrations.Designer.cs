@@ -10,23 +10,23 @@ using rotating.Models;
 namespace rotating.Migrations.Area
 {
     [DbContext(typeof(AreaContext))]
-    [Migration("20201217052713_AreaMigrations")]
+    [Migration("20201220142815_AreaMigrations")]
     partial class AreaMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("rotating.Models.Area", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<int>("area_type")
                         .HasColumnType("int");
@@ -50,273 +50,273 @@ namespace rotating.Migrations.Area
                         {
                             id = 1,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "FOC I",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 2,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "LOC I",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 3,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM 30",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 4,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM KPC",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 5,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM LOC II",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 6,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM LOC I",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 7,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM FOC I",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 8,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM LPG",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 9,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM FOC II",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 10,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM DRUM PLAN",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 11,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "UTL I",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 12,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM DERMAGA",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 13,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM UTL I",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 14,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM TELUK PENYU",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 15,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "KPC",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 16,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "SRU",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 17,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "LOC III",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 18,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "UTL III",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 19,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "LOC II",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 20,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "AREA 05",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 21,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "FOC II A",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 22,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "FOC II B",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 23,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM LOC III",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 24,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "UTL II",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 25,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 26,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "RFCC GTO",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 27,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "RFCC UTL",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 28,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "RFCC RCU",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 29,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "RFCC LEU",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 30,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "SRU & IPAL",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 31,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "PLBC UTL III",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 32,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "PLBC FOC I",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 33,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "PLBC LN",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 34,
                             area_type = 0,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             name = "OM DERMAGA PLBC",
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         });
                 });
 #pragma warning restore 612, 618

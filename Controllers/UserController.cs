@@ -28,24 +28,23 @@ namespace rotating.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult<User>> Create(User User)
+        public async Task<ActionResult> Create(
+            [Bind("nip","name","email","password","phone","status","role","created_at","updated_at")] 
+            User users
+        )
         {
-            User = new User();
-            if (ModelState.IsValid)
-            {
-                 _db.users.Add(User);
-                var status = await _db.SaveChangesAsync();
-                return Json(new
-                {
+            if(ModelState.IsValid){
+                _db.users.Add(users);
+                await _db.SaveChangesAsync();
+                return Json( new {
                     success = true,
-                    message = "Success added new user account..!"
+                    message = "Success added new users..!"
                 });
             }
-            return Json(new
-            {
+            
+            return Json( new {
                 success = false,
-                message = "Failed added new user account..!"
+                message = "Failed to added new users..!"
             });
         }
 
@@ -54,7 +53,7 @@ namespace rotating.Controllers
             var upload_exists = await _db.users.FirstOrDefaultAsync(e => e.id == id);
             if(upload_exists == null){
                 return Json( new {
-                    status = false,
+                    success = false,
                     message = "Error Deleted Users !"
                 });
             }

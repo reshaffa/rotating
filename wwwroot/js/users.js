@@ -18,6 +18,7 @@ $(document).ready(function() {
             "datatype" : "json"
         },
         "columns" : [
+            { "data" : null },
             { "data" : "name"},
             { "data" : "email"},
             { "data" : "phone" },
@@ -42,14 +43,32 @@ $(document).ready(function() {
     $('#search-table').on('keyup', function () {
         tables.search( this.value ).draw();
     });
+    tables.on( 'order.dt search.dt', function () {
+        tables.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
     /* Create User Modal Pop-Up */
     $("#btn-create").on("click", function(){
         $("#modal-create-users").modal('show');
     });
     $('#modal-create-users').on('shown.bs.modal', function (e) {
-        $("#nip").focus()
+        $("#nip").focus();
+        $("#status").lc_switch();
     });
-
+    $('#modal-create-users').on('hidden.bs.modal', function (e) {
+        $("#nip").val("");
+        $("#name").val("");
+        $("#email").val("");
+        $("#phone").val("");
+        $("#role").val("");
+        $("#status").val("0");
+    });
+    $('body').delegate('.lcs_check', 'lcs-statuschange', function() {
+        var status = ($(this).is(':checked')) ? 'checked' : 'unchecked';
+        return (status=="checked" ? $("#status").val(1) : $("#status").val(1))
+    });
+    
     $('#btn-save').on("click", function(e) {
         e.preventDefault();
         var nip = $("#nip").val();
@@ -57,7 +76,7 @@ $(document).ready(function() {
         var email = $("#email").val();
         var phone = $("#phone").val();
         var role = $("#role").val();
-
+        var status = $("#status").val();
         var error = false;
 
         if(_.isEmpty(nip) || _.isUndefined(nip)){
@@ -108,23 +127,31 @@ $(document).ready(function() {
                 phone: phone,
                 role : role,
                 password : 'PertaminaRU4',
-                status: 1,
+                status : status,
                 created_at : moment().format('YYYY-MM-DD HH:mm:ss'),
                 updated_at : moment().format('YYYY-MM-DD HH:mm:ss'),
             }
+            $("#btn-save").attr("disabled",true);
+            $("#btn-save").text("");
+            $("#btn-save").append('<i class="fas fa-sync-alt fa-spin"></i> Loading to save...');
+                    
             $.ajax({
                 type : 'POST',
                 url  : '/user/create',
                 data : parameter,
                 dataType : "JSON",
                 success: function(response){
+                    $("#btn-save").attr("disabled",false);
+                    $("#btn-save").text("Save");
                     if(response.success){
                         toastr.success(response.message);
+                        $("#modal-create-users").modal("hide");
                         tables.ajax.reload();
                     }else{
                         toastr.error(response.message);
                     }
                 }, error : function(err){
+                    $("#btn-save").attr("disabled",false);
                     toastr.error("Internal Server Error !");
                 }
             });

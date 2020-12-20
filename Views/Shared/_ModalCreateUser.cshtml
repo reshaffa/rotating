@@ -1,3 +1,4 @@
+@model rotating.Models.User
 <div class="modal fade" id="modal-create-users" tabindex="-1" role="dialog" aria-labelledby="mcu-title" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -13,7 +14,7 @@
           </div>
         </div>
         <br />
-        <form id="submit-user" asp-action="Create" asp-controller="User" method="post">
+        <form id="submit-user" asp-action="Create" asp-controller="User" method="POST">
           <div class="form-group row">
             <div class="col-md-3">
               <label class="control-label" for="nip">Nip <span class="text-danger">*</span></label>
@@ -52,7 +53,7 @@
           </div>
           <div class="form-group row">
             <div class="col-md-3">
-              <label class="control-label" for="phone">Role <span class="text-danger">*</span></label>
+              <label class="control-label" for="role">Role <span class="text-danger">*</span></label>
             </div>
             <div class="col-md-5">
               <select class="form-control form-control-sm" id="role">
@@ -63,6 +64,14 @@
                 <option value="supervisor"> Supervisor</option>
               </select>
               <small class="form-text text-danger error-role"></small> 
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3">
+              <label class="control-label" for="status">Status <span class="text-danger">*</span></label>
+            </div>
+            <div class="col-md-9">
+              <input type="checkbox" id="status" value="0" class="lcs_check" autocomplete="off" />
             </div>
           </div>
           <div class="from-group row">

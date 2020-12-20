@@ -10,23 +10,23 @@ using rotating.Models;
 namespace rotating.Migrations.Vibration
 {
     [DbContext(typeof(VibrationContext))]
-    [Migration("20201217052650_VibrationMigrations")]
+    [Migration("20201220143541_VibrationMigrations")]
     partial class VibrationMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("rotating.Models.Vibration", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<string>("acc_status")
                         .HasColumnType("nvarchar(max)");

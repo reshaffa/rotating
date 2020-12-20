@@ -191,16 +191,20 @@ $(document).ready(function() {
 
         if(!error){
             var data = JSON.parse(uploads);
+            let config = moment(year.toString()).startOf('isoWeek').format('YYYY-MM-DD');
+            let compare_date = moment(config).add(parseInt(month)-1,'month').add(parseInt(week),'week');
+            let initial_date = moment(compare_date).format('YYYY-MM-DD')
 
             var parameter = {
-                uploads : {
-                    filename : data[0].filename,
-                    items : data[0].items
-                },
+                items : data[0].items,
+                filename : data[0].filename,
+                initial_date : initial_date,
                 year : parseInt(year),
                 month : parseInt(month),
                 week : parseInt(week)
             }
+
+            console.log(parameter)
 
             $("#btn-uploads").attr("disabled",true);
             $("#btn-uploads").text("");
@@ -210,7 +214,7 @@ $(document).ready(function() {
                 type : "POST",
                 url : "/vibration/create",
                 dataType : "JSON",
-                data : { parameter },
+                data : parameter,
                 success : function(response){
                     console.log(response)
                 }, error : function(err){

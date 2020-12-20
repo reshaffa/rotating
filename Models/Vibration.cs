@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using rotating.Models;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -64,5 +65,10 @@ namespace rotating.Models {
         public string saran { get {return def_saran; } set { def_saran = value; } }
         public DateTime created_at { get; set; }
         public DateTime updated_at { get; set; }
+        
+        public Upload uploads {get; set;}
+        public User users { get; set; }
+        public Area areas { get; set;}
+
     }
 }

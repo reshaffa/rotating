@@ -15,16 +15,16 @@ namespace rotating.Migrations.User
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("rotating.Models.User", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("created_at")
                         .HasColumnType("datetime2");
@@ -66,41 +66,41 @@ namespace rotating.Migrations.User
                         new
                         {
                             id = 1,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "yulianti@pertamina.com",
                             name = "Yulianti Eka Prista",
                             nip = 194020001,
-                            password = "7cUDtt084TSg1vUyltg+xJHXaa+ZQvxJgGKMIZ7cvaA=",
+                            password = "tyyyAbbeaMS4FBHCdvUaAC5a6THCA1zAf6rC/jghXtw=",
                             phone = "08821389745",
                             role = "engineer",
                             status = 1,
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 2,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "pratama@pertamina.com",
                             name = "Pratama Edi Saputra",
                             nip = 194020002,
-                            password = "7cUDtt084TSg1vUyltg+xJHXaa+ZQvxJgGKMIZ7cvaA=",
+                            password = "tyyyAbbeaMS4FBHCdvUaAC5a6THCA1zAf6rC/jghXtw=",
                             phone = "087985298445",
                             role = "engineer",
                             status = 1,
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         },
                         new
                         {
                             id = 3,
-                            created_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local),
+                            created_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local),
                             email = "safril@pertamina.com",
                             name = "Safril Sidik",
                             nip = 194020003,
-                            password = "7cUDtt084TSg1vUyltg+xJHXaa+ZQvxJgGKMIZ7cvaA=",
+                            password = "tyyyAbbeaMS4FBHCdvUaAC5a6THCA1zAf6rC/jghXtw=",
                             phone = "088213669701",
                             role = "admin",
                             status = 1,
-                            updated_at = new DateTime(2020, 12, 17, 0, 0, 0, 0, DateTimeKind.Local)
+                            updated_at = new DateTime(2020, 12, 20, 0, 0, 0, 0, DateTimeKind.Local)
                         });
                 });
 #pragma warning restore 612, 618

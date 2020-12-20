@@ -10,23 +10,23 @@ using rotating.Models;
 namespace rotating.Migrations.Upload
 {
     [DbContext(typeof(UploadContext))]
-    [Migration("20201217052701_UploadMigrations")]
+    [Migration("20201220142849_UploadMigrations")]
     partial class UploadMigrations
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.9")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.1");
 
             modelBuilder.Entity("rotating.Models.Upload", b =>
                 {
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .UseIdentityColumn();
 
                     b.Property<DateTime>("created_at")
                         .HasColumnType("datetime2");
@@ -47,8 +47,20 @@ namespace rotating.Migrations.Upload
                     b.Property<int>("last_two")
                         .HasColumnType("int");
 
+                    b.Property<int>("month")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("updated_at")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("upload_type")
+                        .HasColumnType("int");
+
+                    b.Property<int>("week")
+                        .HasColumnType("int");
+
+                    b.Property<int>("year")
+                        .HasColumnType("int");
 
                     b.HasKey("id");
 
