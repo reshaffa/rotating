@@ -32,8 +32,11 @@ namespace rotating.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(Vibration vibration){
-            
+        public ActionResult Create(Vibration vibration){
+            return Json(new{
+                success = true,
+                message = vibration
+            });
         }
 
         [HttpDelete]
