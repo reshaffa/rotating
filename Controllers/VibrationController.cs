@@ -33,9 +33,58 @@ namespace rotating.Controllers
 
         [HttpPost]
         public ActionResult Create(Vibration vibration){
-            return Json(new{
+            var name = "FOC I";
+            var upload = _uploads.uploads.FromSqlRaw("EXECUTE dbo.get_three_weeks").ToList();
+            var area = _areas.areas.FromSqlInterpolated($"EXECUTE dbo.get_area_by_name {name}").ToList();
+            var area_id = area[0].id;
+
+            var last_one = 0;
+            var last_two = 0;
+            var last_three = 0;
+
+            switch (upload.Count)
+            {
+                case 3 : 
+                    last_three = upload[2].id;
+                    last_two = upload[1].id;
+                    last_one = upload[0].id;
+                break;
+                case 2 : 
+                    last_three = 0;
+                    last_two = upload[1].id;
+                    last_one = upload[0].id;
+                break;
+                case 1 : 
+                    last_three = 0;
+                    last_two = 0;
+                    last_one = upload[0].id;
+                break;
+                default:
+                    last_one = 0;
+                    last_two = 0;
+                    last_three = 0;
+                break;
+            }
+            /*
+            var _uploaded_data = new Upload();
+            _uploaded_data.filename = vibration.uploads.filename;
+            _uploaded_data.initial_date = vibration.uploads.initial_date;
+            _uploaded_data.last_one = last_one;
+            _uploaded_data.last_two = last_two;
+            _uploaded_data.last_three = last_three;
+            _uploaded_data.year = vibration.uploads.year;
+            _uploaded_data.month = vibration.uploads.month;
+            _uploaded_data.week = vibration.uploads.week;
+            _uploaded_data.upload_type = 1;
+            _uploaded_data.created_at = DateTime.Now;
+            _uploaded_data.updated_at = DateTime.Now;
+
+            _uploads.uploads.Add(_uploaded_data);
+            await _uploads.SaveChangesAsync();
+            */
+            return Json( new {
                 success = true,
-                message = vibration
+                message = "Success added new file...!"
             });
         }
 

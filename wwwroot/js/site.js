@@ -196,8 +196,10 @@ $(document).ready(function() {
             let initial_date = moment(compare_date).format('YYYY-MM-DD')
 
             var parameter = {
-                items : data[0].items,
-                filename : data[0].filename,
+                uploads : {
+                    items : data[0].items,
+                    filename : data[0].filename,
+                },
                 initial_date : initial_date,
                 year : parseInt(year),
                 month : parseInt(month),
