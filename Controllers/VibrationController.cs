@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using rotating.Models;
 
 namespace rotating.Controllers
@@ -14,6 +15,7 @@ namespace rotating.Controllers
         private readonly VibrationContext _db;
         private readonly AreaContext _areas;
         private readonly UploadContext _uploads;
+
         public VibrationController(VibrationContext db, AreaContext db_area, UploadContext db_upload)
         {
             _db = db;
@@ -32,7 +34,8 @@ namespace rotating.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Vibration vibration){
+        public ActionResult Create(string filename, DateTime initial_date, int year, int month, int week, DateTime created_at, DateTime updated_at){
+            
             var name = "FOC I";
             var upload = _uploads.uploads.FromSqlRaw("EXECUTE dbo.get_three_weeks").ToList();
             var area = _areas.areas.FromSqlInterpolated($"EXECUTE dbo.get_area_by_name {name}").ToList();
@@ -65,32 +68,31 @@ namespace rotating.Controllers
                     last_three = 0;
                 break;
             }
-            /*
-            var _uploaded_data = new Upload();
-            _uploaded_data.filename = vibration.uploads.filename;
-            _uploaded_data.initial_date = vibration.uploads.initial_date;
-            _uploaded_data.last_one = last_one;
-            _uploaded_data.last_two = last_two;
-            _uploaded_data.last_three = last_three;
-            _uploaded_data.year = vibration.uploads.year;
-            _uploaded_data.month = vibration.uploads.month;
-            _uploaded_data.week = vibration.uploads.week;
-            _uploaded_data.upload_type = 1;
-            _uploaded_data.created_at = DateTime.Now;
-            _uploaded_data.updated_at = DateTime.Now;
+            var uploading = new Upload(){
+                filename = filename,
+                initial_date = initial_date,
+                upload_type = 1,
+                last_one = last_one,
+                last_two = last_two,
+                last_three = last_three,
+                year = year,
+                month = month,
+                week = week,
+                created_at = created_at,
+                updated_at = updated_at
+            };
 
-            _uploads.uploads.Add(_uploaded_data);
-            await _uploads.SaveChangesAsync();
-            */
+            _uploads.uploads.Add(uploading);
+            _uploads.SaveChanges();
             return Json( new {
                 success = true,
-                message = "Success added new file...!"
+                message = "Success upload and fetch data vibration...!"
             });
         }
 
         [HttpDelete]
         public async Task<ActionResult> Delete(int id){
-            var upload_exists = await _db.vibrations.FirstOrDefaultAsync(e => e.id == id);
+            var upload_exists = await _uploads.uploads.FirstOrDefaultAsync(e => e.id == id);
             if(upload_exists == null){
                 return Json( new {
                     status = false,
@@ -98,8 +100,8 @@ namespace rotating.Controllers
                 });
             }
 
-            _db.Remove(upload_exists);
-            await _db.SaveChangesAsync();
+            _uploads.Remove(upload_exists);
+            await _uploads.SaveChangesAsync();
             return Json( new {
                 success = true,
                 message = "Success Deleted Vibrations !"

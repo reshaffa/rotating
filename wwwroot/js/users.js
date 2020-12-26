@@ -1,4 +1,4 @@
-var status;
+var tables;
 $(document).ready(function() {
 
     /* DataTable Options Setting */

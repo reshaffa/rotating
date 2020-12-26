@@ -80,10 +80,12 @@ function readExcel(file){
     })
 }
 
+var tables;
+
 $(document).ready(function() {
 
     /* DataTable Options Setting */
-    var tables = $('#table-vibrations').DataTable({
+    tables = $('#table-vibrations').DataTable({
         "lengthChange": false,
         "searching": true,
         "zeroRecords":    "No matching records found",
@@ -99,13 +101,22 @@ $(document).ready(function() {
             "datatype" : "json"
         },
         "columns" : [
-            { "data" : "#" },
-            { "data" : "Filename"},
-            { "data" : "Description" },
-            {
-                "data" : "id",
-                "render" : function(data){
-                    return `<button class="btn btn-otline-danger btn-sm">Hapus</button>`
+            { "data" : null },
+            { "data" : "filename"},
+            { "data" : function(data){
+                    return ``+
+                    `${ moment().month(data.month).format('MMM')} W-${data.week} ${data.year}`;
+                }
+            },
+            { "data" : function(data){
+                    return ``+
+                    `<div class="text-center">
+                        <button 
+                            type="button" 
+                            class="btn btn-outline-danger btn-sm" 
+                            onclick=deleted('/vibration/delete?id='+${data.id})
+                        >Hapus</button>
+                    </div>`
                 }
             }
         ]
@@ -114,6 +125,11 @@ $(document).ready(function() {
     $('#search-table').on('keyup', function () {
         tables.search( this.value ).draw();
     });
+    tables.on( 'order.dt search.dt', function () {
+        tables.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
     /* End DataTable Options Setting */
 
     /* Start Excel Plugin */
@@ -196,35 +212,69 @@ $(document).ready(function() {
             let initial_date = moment(compare_date).format('YYYY-MM-DD')
 
             var parameter = {
-                uploads : {
-                    items : data[0].items,
-                    filename : data[0].filename,
-                },
+                filename : data[0].filename,
+                //items : JSON.stringify(data[0].items),
                 initial_date : initial_date,
                 year : parseInt(year),
                 month : parseInt(month),
-                week : parseInt(week)
+                week : parseInt(week),
+                created_at : moment().format('YYYY-MM-DD HH:mm:ss'),
+                updated_at : moment().format('YYYY-MM-DD HH:mm:ss')
             }
-
-            console.log(parameter)
 
             $("#btn-uploads").attr("disabled",true);
             $("#btn-uploads").text("");
             $("#btn-uploads").append('<i class="fas fa-sync-alt fa-spin"></i> Loading to save...');
-
+            
             $.ajax({
                 type : "POST",
                 url : "/vibration/create",
                 dataType : "JSON",
                 data : parameter,
                 success : function(response){
-                    console.log(response)
+                    $("#btn-uploads").attr("disabled",false);
+                    $("#btn-uploads").text("Submit");
+                    if(response.success){
+                        $("#form-uploads")[0].reset();
+                        tables.ajax.reload();
+                        toastr.success(response.message);
+                    }else{
+                        toastr.error(response.message);
+                    }
                 }, error : function(err){
                     $("#btn-uploads").attr("disabled",false);
-                    $("#btn-uploads").text("Create");
+                    $("#btn-uploads").text("Submit");
                     toastr.error("Internal Server Error !")
                 }
             })
         }
     });
 });
+
+function deleted(url){
+    swal({
+        title : "Yakin akan dihapus..?",
+        text : "Jika dihapus, data tidak dapat dikembalikan..!",
+        icon : "warning",
+        buttons : true,
+        dangerMode : true
+    }).then((willDelete) => {
+        if(willDelete){
+            $.ajax({
+                type : "DELETE",
+                url : url,
+                success : function(response){
+                    if(response.success){
+                        tables.ajax.reload();
+                        toastr.success(response.message);
+                    }else{
+                        toastr.error(response.message);
+                    }
+                },
+                error : function(err){
+                    toastr.error("Internal Server Error !")
+                }
+            })
+        }
+    })
+}
